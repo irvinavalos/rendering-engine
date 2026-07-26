@@ -1,3 +1,4 @@
+#include "utils.h"
 #include "quad.h"
 
 Quad::Quad(double x, double y, double z, double w) noexcept
@@ -20,18 +21,18 @@ double Quad::w() const noexcept {
 }
 
 bool Quad::isPoint() const noexcept {
-    return m_w == 1.0;
+    return equalf(m_w, 1.0);
 }
 
 bool Quad::isVector() const noexcept {
-    return m_w == 0.0;
+    return equalf(m_w, 0.0);
 }
 
 bool Quad::operator==(const Quad& other) const {
-    return (m_x == other.m_x)
-        && (m_y == other.m_y)
-        && (m_z == other.m_z)
-        && (m_w == other.m_w);
+    return equalf(m_x, other.m_x)
+        && equalf(m_y, other.m_y)
+        && equalf(m_z, other.m_z)
+        && equalf(m_w, other.m_w);
 }
 
 Quad& Quad::operator+=(const Quad& other) {
