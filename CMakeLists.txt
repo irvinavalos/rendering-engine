@@ -15,13 +15,22 @@ add_library(math_lib
 
 target_include_directories(math_lib PUBLIC src)
 
+add_library(rendering_lib
+    src/rendering/colors.cpp
+    src/rendering/canvas.cpp
+)
+
+target_include_directories(rendering_lib PUBLIC src)
+
 add_executable(main src/main.cpp)
-target_link_libraries(main PRIVATE math_lib)
+target_link_libraries(main PRIVATE math_lib rendering_lib)
 
 add_executable(tests
     tests/main.cpp
     tests/test_quad.cpp
+    tests/test_colors.cpp
+    tests/test_canvas.cpp
 )
 
-target_link_libraries(tests PRIVATE math_lib)
+target_link_libraries(tests PRIVATE math_lib rendering_lib)
 target_include_directories(tests PRIVATE external)
