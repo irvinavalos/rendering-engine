@@ -8,4 +8,8 @@ public:
     explicit Point(double x, double y, double z) noexcept;
 };
 
+Point operator*(const Point& v, double a);
+
+Point operator*(double a, const Point& v);
+
 #endif // !POINT_H
