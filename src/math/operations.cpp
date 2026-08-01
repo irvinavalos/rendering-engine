@@ -1,6 +1,21 @@
 #include <cmath>
 #include "operations.h"
 
+Point operator+(const Point& p, const Vec3& v) {
+    Quad q{static_cast<const Quad&>(p) + static_cast<const Quad&>(v)};
+    return Point(q.x(), q.y(), q.z());
+}
+
+Point operator+(const Vec3& v, const Point& p) {
+    Quad q{static_cast<const Quad&>(p) + static_cast<const Quad&>(v)};
+    return Point(q.x(), q.y(), q.z());
+}
+
+Vec3 operator+(const Vec3& v1, const Vec3& v2) {
+    Quad q{static_cast<const Quad&>(v1) + static_cast<const Quad&>(v2)};
+    return Vec3(q.x(), q.y(), q.z());
+}
+
 Vec3 operator-(const Point& p1, const Point& p2) {
     Quad q{static_cast<const Quad&>(p1) - static_cast<const Quad&>(p2)};
     return Vec3(q.x(), q.y(), q.z());
@@ -13,6 +28,16 @@ Point operator-(const Point& p, const Vec3& v) {
 
 Vec3 operator-(const Vec3& v1, const Vec3& v2) {
     Quad q{static_cast<const Quad&>(v1) - static_cast<const Vec3&>(v2)};
+    return Vec3(q.x(), q.y(), q.z());
+}
+
+Vec3 operator*(const Vec3& v, double a) {
+    Quad q{static_cast<const Quad&>(v) * a};
+    return Vec3(q.x(), q.y(), q.z());
+}
+
+Vec3 operator*(double a, const Vec3& v) {
+    Quad q{static_cast<const Quad&>(v) * a};
     return Vec3(q.x(), q.y(), q.z());
 }
 

@@ -49,6 +49,14 @@ TEST_SUITE("Quad") {
         CHECK(q1 + q2 == Quad(1, 1, 6, 1));
     }
 
+    TEST_CASE("Adding a point with a vector") {
+        Point p{1, 2, 3};
+        Vec3 v{1, 2, 3};
+
+        CHECK(p + v == Point(2, 4, 6));
+        CHECK(v + p == Point(2, 4, 6));
+    }
+
     TEST_CASE("Subtracting two points") {
         Point p1{3, 2, 1};
         Point p2{5, 6, 7};
